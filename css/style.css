@@ -1,0 +1,708 @@
+/* ============================================================
+   Резюме Екатерины Степенок — Корпоративный стиль
+   ============================================================ */
+
+:root {
+    /* Цвета */
+    --primary: #2c3e50;
+    --primary-light: #34495e;
+    --accent: #2980b9;
+    --accent-hover: #1a6a9f;
+    --gold: #c09550;
+    --gold-light: #f8f4ed;
+    --bg: #f9f9f9;
+    --white: #ffffff;
+    --text: #2c3e50;
+    --text-light: #5a6c7d;
+    --text-muted: #8899a6;
+    --border: #e1e5ea;
+    --border-light: #edf1f5;
+    --success: #27ae60;
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+    --shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+    --shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.1);
+    --radius: 6px;
+    --radius-lg: 10px;
+    --transition: 0.25s ease;
+    --font: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    --max-width: 1100px;
+}
+
+/* Сброс */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font);
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ==================== ШАПКА ==================== */
+.header {
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: var(--shadow-sm);
+}
+
+.header__inner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+}
+
+.header__logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: var(--primary);
+    font-weight: 700;
+    font-size: 1.1rem;
+    letter-spacing: -0.01em;
+}
+
+.header__logo-icon {
+    width: 36px;
+    height: 36px;
+    background: var(--primary);
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+/* Навигация */
+.nav {
+    display: flex;
+    gap: 4px;
+}
+
+.nav__link {
+    padding: 8px 16px;
+    text-decoration: none;
+    color: var(--text-light);
+    font-weight: 500;
+    font-size: 0.9rem;
+    border-radius: var(--radius);
+    transition: all var(--transition);
+}
+
+.nav__link:hover {
+    color: var(--accent);
+    background: #f5f8fb;
+}
+
+.nav__link.active {
+    color: var(--accent);
+    background: #eef4f9;
+    font-weight: 600;
+}
+
+/* Бургер */
+.burger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 4px;
+    background: none;
+    border: none;
+}
+
+.burger span {
+    width: 24px;
+    height: 2px;
+    background: var(--primary);
+    border-radius: 2px;
+    transition: all var(--transition);
+}
+
+/* ==================== ОСНОВНОЙ КОНТЕНТ ==================== */
+.main {
+    flex: 1;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 30px 20px 60px;
+    width: 100%;
+}
+
+/* ==================== ГЕРОЙ (главная) ==================== */
+.hero {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 36px;
+    align-items: start;
+    margin-bottom: 40px;
+}
+
+.hero__photo-wrap {
+    position: sticky;
+    top: 84px;
+}
+
+.hero__photo {
+    width: 100%;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    background: #e8ecf0;
+    transition: transform var(--transition);
+}
+
+.hero__photo:hover {
+    transform: scale(1.02);
+}
+
+.hero__content h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    color: var(--primary);
+    margin-bottom: 4px;
+}
+
+.hero__subtitle {
+    font-size: 1.05rem;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.hero__meta {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.hero__divider {
+    width: 50px;
+    height: 3px;
+    background: var(--gold);
+    border-radius: 2px;
+    margin-bottom: 18px;
+}
+
+.hero__text {
+    font-size: 0.95rem;
+    color: var(--text-light);
+    line-height: 1.75;
+    max-width: 560px;
+}
+
+/* Блок с быстрыми фактами */
+.quick-facts {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 14px;
+    margin-top: 24px;
+}
+
+.quick-fact {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 16px;
+    text-align: center;
+    transition: all var(--transition);
+}
+
+.quick-fact:hover {
+    box-shadow: var(--shadow);
+    border-color: #d0d8e0;
+    transform: translateY(-1px);
+}
+
+.quick-fact__num {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--accent);
+}
+
+.quick-fact__label {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-top: 2px;
+}
+
+/* ==================== СЕКЦИИ ==================== */
+.section {
+    margin-bottom: 36px;
+}
+
+.section__title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--primary);
+    margin-bottom: 16px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--border-light);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.section__title-icon {
+    width: 8px;
+    height: 8px;
+    background: var(--accent);
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+/* Карточка */
+.card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 24px 28px;
+    box-shadow: var(--shadow-sm);
+    transition: all var(--transition);
+}
+
+.card:hover {
+    box-shadow: var(--shadow);
+}
+
+/* ==================== ОПЫТ РАБОТЫ ==================== */
+.experience-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.exp-item {
+    padding: 18px 20px;
+    background: #fafbfc;
+    border-left: 3px solid var(--accent);
+    border-radius: 0 var(--radius) var(--radius) 0;
+    transition: all var(--transition);
+}
+
+.exp-item:hover {
+    background: #f5f8fb;
+    transform: translateX(3px);
+}
+
+.exp-item__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.exp-item__role {
+    font-weight: 700;
+    font-size: 1rem;
+}
+
+.exp-item__date {
+    font-size: 0.8rem;
+    color: var(--accent);
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.exp-item__company {
+    font-size: 0.88rem;
+    color: var(--text-light);
+    font-weight: 500;
+}
+
+.exp-item__desc {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-top: 4px;
+}
+
+/* ==================== НАВЫКИ ==================== */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
+}
+
+.skill-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    background: #fafbfc;
+    border-radius: var(--radius);
+    font-weight: 600;
+    font-size: 0.88rem;
+    transition: all var(--transition);
+    cursor: default;
+}
+
+.skill-item:hover {
+    background: #eef4f9;
+    transform: translateX(3px);
+}
+
+.skill-item__dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+}
+
+/* ==================== ПОРТФОЛИО ==================== */
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 18px;
+}
+
+.portfolio-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    transition: all var(--transition);
+}
+
+.portfolio-card:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-3px);
+}
+
+.portfolio-card__img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    background: #e8ecf0;
+}
+
+.portfolio-card__body {
+    padding: 16px 20px;
+}
+
+.portfolio-card__title {
+    font-weight: 700;
+    font-size: 0.95rem;
+}
+
+.portfolio-card__desc {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    margin-top: 4px;
+}
+
+.portfolio-card__tags {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-top: 8px;
+}
+
+.portfolio-card__tag {
+    font-size: 0.72rem;
+    background: #eef4f9;
+    color: var(--accent);
+    padding: 3px 10px;
+    border-radius: 50px;
+    font-weight: 600;
+}
+
+/* ==================== КОНТАКТЫ ==================== */
+.contacts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 14px;
+}
+
+.contact-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 20px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    text-decoration: none;
+    color: var(--text);
+    transition: all var(--transition);
+}
+
+.contact-card:hover {
+    border-color: var(--accent);
+    box-shadow: var(--shadow);
+    transform: translateY(-1px);
+}
+
+.contact-card__icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #eef4f9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+    transition: all var(--transition);
+}
+
+.contact-card:hover .contact-card__icon {
+    background: var(--accent);
+    color: #fff;
+}
+
+.contact-card__label {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.contact-card__value {
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+/* ==================== СТРАНИЦА "ОБО МНЕ" ==================== */
+.about-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+}
+
+.about-full {
+    grid-column: 1 / -1;
+}
+
+/* ==================== ФУТЕР ==================== */
+.footer {
+    background: var(--primary);
+    color: #b0bec5;
+    text-align: center;
+    padding: 20px;
+    font-size: 0.82rem;
+    margin-top: auto;
+}
+
+.footer a {
+    color: #cfd8dc;
+    text-decoration: none;
+}
+
+.footer a:hover {
+    color: #fff;
+}
+
+/* ==================== АДАПТИВ ==================== */
+@media (max-width: 768px) {
+    .hero {
+        grid-template-columns: 1fr;
+    }
+    .hero__photo-wrap {
+        position: static;
+        max-width: 240px;
+        margin: 0 auto;
+    }
+    .hero__content h1 {
+        font-size: 1.7rem;
+    }
+    .about-layout {
+        grid-template-columns: 1fr;
+    }
+    .nav {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 64px;
+        left: 0;
+        right: 0;
+        background: var(--white);
+        border-bottom: 1px solid var(--border);
+        padding: 8px 20px;
+        box-shadow: var(--shadow);
+    }
+    .nav.open {
+        display: flex;
+    }
+    .burger {
+        display: flex;
+    }
+    .header__inner {
+        padding: 0 16px;
+    }
+}
+
+/* ==================== ДОПОЛНИТЕЛЬНЫЕ БЛОКИ РЕЗЮМЕ ==================== */
+
+/* Сертификаты */
+.cert-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 12px;
+}
+.cert-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 16px;
+    background: #fafbfc;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    transition: all var(--transition);
+}
+.cert-item:hover {
+    box-shadow: var(--shadow);
+    border-color: #d0d8e0;
+}
+.cert-item__icon {
+    font-size: 1.4rem;
+    flex-shrink: 0;
+}
+.cert-item__info h4 {
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+.cert-item__info p {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+}
+
+/* Публикации */
+.publications-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+.pub-item {
+    padding: 10px 14px;
+    font-size: 0.88rem;
+    border-left: 3px solid transparent;
+    transition: all var(--transition);
+    color: var(--text-light);
+}
+.pub-item:hover {
+    border-left-color: var(--accent);
+    background: #fafbfc;
+}
+.pub-item strong {
+    color: var(--primary);
+}
+
+/* Достижения */
+.achievements-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 12px;
+}
+.achievement-card {
+    padding: 16px;
+    background: #fdfaf7;
+    border: 1px solid var(--gold-light);
+    border-radius: var(--radius);
+    text-align: center;
+    transition: all var(--transition);
+}
+.achievement-card:hover {
+    background: #fff;
+    box-shadow: var(--shadow);
+    transform: translateY(-2px);
+}
+.achievement-card__icon {
+    font-size: 1.6rem;
+    margin-bottom: 6px;
+}
+.achievement-card__text {
+    font-weight: 600;
+    font-size: 0.88rem;
+}
+
+/* Техника */
+.equipment-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+.equipment-item {
+    padding: 10px 16px;
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 60px;
+    font-size: 0.84rem;
+    font-weight: 600;
+    transition: all var(--transition);
+    cursor: default;
+}
+.equipment-item:hover {
+    border-color: var(--accent);
+    background: #eef4f9;
+}
+
+/* Рекомендации */
+.recommendation-card {
+    padding: 18px 20px;
+    background: #fafbfc;
+    border-radius: var(--radius);
+    border: 1px solid var(--border-light);
+    font-style: italic;
+    margin-bottom: 10px;
+    position: relative;
+}
+.recommendation-card::before {
+    content: '«';
+    font-size: 3rem;
+    color: var(--gold);
+    position: absolute;
+    top: -4px;
+    left: 10px;
+    opacity: 0.3;
+}
+.recommendation-card__text {
+    font-size: 0.88rem;
+    color: var(--text-light);
+    padding-left: 20px;
+}
+.recommendation-card__author {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 0.82rem;
+    margin-top: 8px;
+    padding-left: 20px;
+    color: var(--primary);
+}
+.recommendation-card__author span {
+    font-weight: 400;
+    color: var(--text-muted);
+}

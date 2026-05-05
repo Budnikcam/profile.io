@@ -3,802 +3,384 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Екатерина Степенок — Портфолио</title>
-    <style>
-        :root {
-            --bg: #fefdfb;
-            --card: #ffffff;
-            --text: #1a1817;
-            --text-secondary: #5c5754;
-            --accent: #c75b4a;
-            --accent-soft: #f9e8e4;
-            --accent2: #8b5e55;
-            --gold: #bfa07a;
-            --gold-soft: #faf5ef;
-            --border: #e7e2dc;
-            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.03);
-            --shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
-            --shadow-lg: 0 12px 36px rgba(0, 0, 0, 0.09);
-            --radius-xl: 22px;
-            --radius-lg: 16px;
-            --radius-md: 12px;
-            --radius-sm: 8px;
-            --transition: 0.4s cubic-bezier(0.25, 0.8, 0.25, 1.2);
-            --font: 'Segoe UI', system-ui, -apple-system, sans-serif;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: var(--font);
-            background: #f7f4f1;
-            background-image:
-                radial-gradient(ellipse at 15% 10%, rgba(199, 91, 74, 0.04) 0%, transparent 55%),
-                radial-gradient(ellipse at 85% 85%, rgba(191, 160, 122, 0.05) 0%, transparent 55%),
-                radial-gradient(ellipse at 50% 50%, rgba(245, 242, 238, 0.9) 0%, transparent 70%);
-            background-attachment: fixed;
-            min-height: 100vh;
-            color: var(--text);
-            -webkit-font-smoothing: antialiased;
-            line-height: 1.5;
-            overflow-x: hidden;
-        }
-
-        /* ============ ANIMATED PARTICLES ============ */
-        .particles {
-            position: fixed;
-            inset: 0;
-            pointer-events: none;
-            z-index: 0;
-            overflow: hidden;
-        }
-        .particle {
-            position: absolute;
-            border-radius: 50%;
-            animation: floatUp linear infinite;
-            opacity: 0;
-        }
-        @keyframes floatUp {
-            0% {
-                transform: translateY(105vh) scale(0);
-                opacity: 0;
-            }
-            10% {
-                opacity: 0.5;
-            }
-            90% {
-                opacity: 0.4;
-            }
-            100% {
-                transform: translateY(-10vh) scale(1.2);
-                opacity: 0;
-            }
-        }
-
-        /* ============ MAIN LAYOUT ============ */
-        .main-container {
-            position: relative;
-            z-index: 1;
-            max-width: 780px;
-            margin: 0 auto;
-            padding: 24px 16px 48px;
-            display: flex;
-            flex-direction: column;
-            gap: 22px;
-        }
-
-        /* ============ CARD BASE ============ */
-        .card {
-            background: var(--card);
-            border-radius: var(--radius-xl);
-            padding: 30px 28px;
-            box-shadow: var(--shadow);
-            border: 1px solid var(--border);
-            transition: all var(--transition);
-            position: relative;
-            overflow: hidden;
-            animation: cardReveal 0.7s ease-out both;
-        }
-        .card:nth-child(1) {
-            animation-delay: 0s;
-        }
-        .card:nth-child(2) {
-            animation-delay: 0.1s;
-        }
-        .card:nth-child(3) {
-            animation-delay: 0.2s;
-        }
-        .card:nth-child(4) {
-            animation-delay: 0.3s;
-        }
-        .card:nth-child(5) {
-            animation-delay: 0.4s;
-        }
-        .card:nth-child(6) {
-            animation-delay: 0.5s;
-        }
-        @keyframes cardReveal {
-            from {
-                opacity: 0;
-                transform: translateY(28px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        .card:hover {
-            box-shadow: var(--shadow-lg);
-            transform: translateY(-3px);
-            border-color: #d5ccc4;
-        }
-        .card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, var(--accent), var(--gold), transparent);
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.6s ease;
-        }
-        .card:hover::before {
-            transform: scaleX(1);
-        }
-
-        /* ============ HERO CARD ============ */
-        .hero-card {
-            display: flex;
-            gap: 26px;
-            align-items: center;
-            padding: 32px 28px;
-            flex-wrap: wrap;
-            justify-content: center;
-            text-align: center;
-        }
-        @media(min-width:600px) {
-            .hero-card {
-                text-align: left;
-                justify-content: flex-start;
-                flex-wrap: nowrap;
-            }
-        }
-        .hero-avatar-wrap {
-            position: relative;
-            flex-shrink: 0;
-        }
-        .hero-avatar {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid #fff;
-            box-shadow: 0 6px 28px rgba(0, 0, 0, 0.1);
-            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-            background: #f0ebe4;
-            animation: avatarPulse 3s ease-in-out infinite;
-        }
-        @keyframes avatarPulse {
-            0%,
-            100% {
-                box-shadow: 0 6px 28px rgba(0, 0, 0, 0.1);
-            }
-            50% {
-                box-shadow: 0 6px 40px rgba(199, 91, 74, 0.25);
-            }
-        }
-        .hero-avatar:hover {
-            transform: scale(1.06) rotate(-2deg);
-            box-shadow: 0 14px 44px rgba(199, 91, 74, 0.3);
-            animation: none;
-        }
-        .hero-status-dot {
-            position: absolute;
-            bottom: 10px;
-            right: 10px;
-            width: 18px;
-            height: 18px;
-            background: #4caf84;
-            border-radius: 50%;
-            border: 3px solid #fff;
-            animation: statusBlink 2s ease-in-out infinite;
-            box-shadow: 0 0 0 0 rgba(76, 175, 132, 0.5);
-        }
-        @keyframes statusBlink {
-            0%,
-            100% {
-                box-shadow: 0 0 0 0 rgba(76, 175, 132, 0.5);
-            }
-            50% {
-                box-shadow: 0 0 0 12px rgba(76, 175, 132, 0);
-            }
-        }
-        .hero-info h1 {
-            font-size: 2rem;
-            font-weight: 700;
-            letter-spacing: -0.03em;
-            line-height: 1.15;
-            color: #1a1817;
-        }
-        .hero-info .hero-role {
-            font-size: 1rem;
-            font-weight: 600;
-            color: var(--accent);
-            margin: 4px 0;
-            letter-spacing: 0.02em;
-        }
-        .hero-info .hero-meta {
-            font-size: 0.85rem;
-            color: #999;
-            display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-        @media(min-width:600px) {
-            .hero-info .hero-meta {
-                justify-content: flex-start;
-            }
-        }
-        .hero-meta span {
-            display: flex;
-            align-items: center;
-            gap: 4px;
-        }
-
-        /* ============ SECTION HEADINGS ============ */
-        .section-head {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 16px;
-        }
-        .section-head .icon {
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            background: var(--accent-soft);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1rem;
-            flex-shrink: 0;
-            transition: all var(--transition);
-        }
-        .card:hover .section-head .icon {
-            background: var(--accent);
-            color: #fff;
-            transform: rotate(-5deg) scale(1.08);
-        }
-        .section-head h2 {
-            font-size: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 0.07em;
-            font-weight: 700;
-            color: #3d3733;
-        }
-
-        /* ============ ABOUT TEXT ============ */
-        .about-text {
-            font-size: 1rem;
-            line-height: 1.7;
-            color: #4a4440;
-            padding-left: 18px;
-            border-left: 3px solid var(--accent-soft);
-            transition: border-color var(--transition);
-        }
-        .card:hover .about-text {
-            border-left-color: var(--accent);
-        }
-
-        /* ============ PHOTO RIBBON ============ */
-        .photo-ribbon {
-            display: flex;
-            gap: 14px;
-            overflow-x: auto;
-            padding-bottom: 8px;
-            scroll-snap-type: x mandatory;
-            -webkit-overflow-scrolling: touch;
-            cursor: grab;
-            scrollbar-width: thin;
-            scrollbar-color: #d5ccc4 transparent;
-        }
-        .photo-ribbon::-webkit-scrollbar {
-            height: 5px;
-        }
-        .photo-ribbon::-webkit-scrollbar-thumb {
-            background: #d5ccc4;
-            border-radius: 5px;
-        }
-        .photo-ribbon img {
-            height: 220px;
-            border-radius: var(--radius-lg);
-            scroll-snap-align: start;
-            flex-shrink: 0;
-            object-fit: cover;
-            box-shadow: var(--shadow-sm);
-            transition: all var(--transition);
-            cursor: pointer;
-            width: auto;
-            aspect-ratio: 4/3;
-            background: #f0ebe4;
-        }
-        .photo-ribbon img:hover {
-            transform: scale(1.04);
-            box-shadow: var(--shadow-lg);
-            z-index: 3;
-            position: relative;
-        }
-        @media(max-width:500px) {
-            .photo-ribbon img {
-                height: 170px;
-            }
-        }
-
-        /* ============ EXPERIENCE TIMELINE ============ */
-        .timeline {
-            position: relative;
-            padding-left: 26px;
-        }
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 6px;
-            top: 4px;
-            bottom: 4px;
-            width: 2px;
-            background: linear-gradient(to bottom, var(--accent), var(--accent-soft), var(--gold-soft));
-            border-radius: 2px;
-        }
-        .tl-item {
-            position: relative;
-            margin-bottom: 18px;
-            padding-left: 18px;
-            transition: all var(--transition);
-            cursor: default;
-        }
-        .tl-item:last-child {
-            margin-bottom: 0;
-        }
-        .tl-item::before {
-            content: '';
-            position: absolute;
-            left: -24px;
-            top: 6px;
-            width: 14px;
-            height: 14px;
-            background: #fff;
-            border: 2px solid var(--accent);
-            border-radius: 50%;
-            z-index: 2;
-            transition: all var(--transition);
-        }
-        .tl-item:hover::before {
-            background: var(--accent);
-            box-shadow: 0 0 0 10px rgba(199, 91, 74, 0.12);
-            transform: scale(1.2);
-        }
-        .tl-item:hover {
-            transform: translateX(4px);
-        }
-        .tl-date {
-            font-size: 0.72rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.06em;
-            color: var(--accent);
-            margin-bottom: 2px;
-        }
-        .tl-role {
-            font-weight: 700;
-            font-size: 0.95rem;
-            color: #1a1817;
-        }
-        .tl-org {
-            font-size: 0.83rem;
-            color: var(--text-secondary);
-            font-weight: 500;
-        }
-        .tl-note {
-            font-size: 0.78rem;
-            color: #999;
-            margin-top: 3px;
-            font-style: italic;
-        }
-
-        /* ============ SKILLS CLOUD ============ */
-        .skills-cloud {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-        .skill-chip {
-            padding: 8px 16px;
-            border-radius: 60px;
-            font-size: 0.82rem;
-            font-weight: 600;
-            cursor: default;
-            transition: all var(--transition);
-            background: #fdf6f4;
-            color: var(--accent2);
-            border: 1px solid transparent;
-            animation: chipPop 0.5s ease-out both;
-        }
-        .skill-chip:nth-child(1) {
-            animation-delay: 0s;
-        }
-        .skill-chip:nth-child(2) {
-            animation-delay: 0.05s;
-        }
-        .skill-chip:nth-child(3) {
-            animation-delay: 0.1s;
-        }
-        .skill-chip:nth-child(4) {
-            animation-delay: 0.15s;
-        }
-        .skill-chip:nth-child(5) {
-            animation-delay: 0.2s;
-        }
-        .skill-chip:nth-child(6) {
-            animation-delay: 0.25s;
-        }
-        .skill-chip:nth-child(7) {
-            animation-delay: 0.3s;
-        }
-        .skill-chip:nth-child(8) {
-            animation-delay: 0.35s;
-        }
-        @keyframes chipPop {
-            from {
-                opacity: 0;
-                transform: scale(0.7);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-        .skill-chip:hover {
-            background: var(--accent);
-            color: #fff;
-            border-color: var(--accent);
-            transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 8px 20px rgba(199, 91, 74, 0.3);
-        }
-
-        /* ============ CONTACT ROW ============ */
-        .contact-row {
-            display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-        @media(min-width:500px) {
-            .contact-row {
-                justify-content: flex-start;
-            }
-        }
-        .contact-pill {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 18px;
-            border-radius: 60px;
-            background: #fff;
-            border: 1px solid var(--border);
-            text-decoration: none;
-            color: var(--text);
-            font-weight: 600;
-            font-size: 0.85rem;
-            transition: all var(--transition);
-            box-shadow: var(--shadow-sm);
-        }
-        .contact-pill:hover {
-            border-color: var(--accent);
-            background: #fefaf9;
-            box-shadow: var(--shadow);
-            transform: translateY(-2px);
-        }
-        .contact-pill .pill-icon {
-            width: 28px;
-            height: 28px;
-            border-radius: 50%;
-            background: var(--accent-soft);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.85rem;
-            transition: all var(--transition);
-            flex-shrink: 0;
-        }
-        .contact-pill:hover .pill-icon {
-            background: var(--accent);
-            color: #fff;
-            transform: scale(1.1);
-        }
-
-        /* ============ EDUCATION MINI CARD ============ */
-        .edu-row {
-            display: flex;
-            gap: 14px;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-        .edu-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: var(--radius-md);
-            background: var(--gold-soft);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.3rem;
-            flex-shrink: 0;
-            transition: all var(--transition);
-        }
-        .card:hover .edu-icon {
-            background: var(--gold);
-            color: #fff;
-            transform: rotate(-3deg);
-        }
-        .edu-info h4 {
-            font-weight: 700;
-            font-size: 0.9rem;
-        }
-        .edu-info p {
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-        }
-
-        /* ============ LANGUAGES ============ */
-        .lang-row {
-            display: flex;
-            gap: 16px;
-            flex-wrap: wrap;
-        }
-        .lang-badge {
-            padding: 8px 16px;
-            border-radius: var(--radius-sm);
-            font-weight: 700;
-            font-size: 0.8rem;
-            background: #fdfaf7;
-            border: 1px solid var(--border);
-            transition: all var(--transition);
-            cursor: default;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-        .lang-badge:hover {
-            background: #fff;
-            border-color: var(--accent);
-            box-shadow: var(--shadow);
-            transform: translateY(-2px);
-        }
-        .lang-level {
-            font-weight: 400;
-            color: var(--accent);
-            font-size: 0.75rem;
-        }
-
-        /* ============ SCROLL-REVEAL (Intersection Observer fallback handled by animation) ============ */
-        @media(prefers-reduced-motion:reduce) {
-            *,
-            *::before,
-            *::after {
-                animation-duration: 0.01ms !important;
-                transition-duration: 0.01ms !important;
-            }
-        }
-    </style>
+    <meta name="description" content="Екатерина Степенок — журналист, фотограф, редактор. Полное резюме. Смоленск.">
+    <title>Екатерина Степенок — Резюме</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-    <!-- Animated particles -->
-    <div class="particles" id="particles" aria-hidden="true"></div>
+    <header class="header">
+        <div class="header__inner">
+            <a href="index.html" class="header__logo">
+                <span class="header__logo-icon">ЕС</span>
+                Екатерина Степенок
+            </a>
+            <button class="burger" aria-label="Меню">
+                <span></span><span></span><span></span>
+            </button>
+            <nav class="nav">
+                <a href="index.html" class="nav__link active">Резюме</a>
+                <a href="about.html" class="nav__link">Обо мне</a>
+                <a href="portfolio.html" class="nav__link">Портфолио</a>
+                <a href="contacts.html" class="nav__link">Контакты</a>
+            </nav>
+        </div>
+    </header>
 
-    <div class="main-container">
+    <main class="main">
 
-        <!-- ============ HERO ============ -->
-        <section class="card hero-card" aria-label="Профиль">
-            <div class="hero-avatar-wrap">
-                <img class="hero-avatar"
+        <!-- 1. ГЕРОЙ -->
+        <section class="hero">
+            <div class="hero__photo-wrap">
+                <img class="hero__photo"
                 src="https://smolgazeta.ru/fc-web/fc-files/2025/07/158894.jpg"
                 alt="Екатерина Степенок"
                 loading="eager"
-                onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22150%22 height=%22150%22%3E%3Crect fill=%22%23f0ebe4%22 width=%22150%22 height=%22150%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22%23b8867c%22 font-size=%2224%22%3EЕС%3C/text%3E%3C/svg%3E'">
-                <div class="hero-status-dot" title="Открыта к предложениям"></div>
+                onerror="this.style.background='#e8ecf0'; this.style.minHeight='350px'">
             </div>
-            <div class="hero-info">
+            <div class="hero__content">
                 <h1>Екатерина Степенок</h1>
-                <p class="hero-role">Журналист · Фотограф · Редактор</p>
-                <div class="hero-meta">
-                    <span>📍 Смоленск</span>
+                <p class="hero__subtitle">Журналист, фотограф, редактор</p>
+                <div class="hero__meta">
+                    <span>📍 Смоленск, Россия</span>
                     <span>🏢 Пресс-центр «Смоленские ведомости»</span>
-                    <span>⏳ 7 лет опыта</span>
+                    <span>📅 28 лет (1998 г.р.)</span>
+                </div>
+                <div class="hero__divider"></div>
+                <p class="hero__text">
+                    Профессиональный журналист с семилетним стажем. Специализируюсь на репортажной
+                    фотосъёмке, написании аналитических статей и редактуре. Открыта к сотрудничеству.
+                </p>
+                <div class="quick-facts">
+                    <div class="quick-fact"><div class="quick-fact__num">7+</div><div class="quick-fact__label">Лет опыта</div></div>
+                    <div class="quick-fact"><div class="quick-fact__num">300+</div><div class="quick-fact__label">Публикаций</div></div>
+                    <div class="quick-fact"><div class="quick-fact__num">50+</div><div class="quick-fact__label">Фоторепортажей</div></div>
+                    <div class="quick-fact"><div class="quick-fact__num">12</div><div class="quick-fact__label">Наград</div></div>
                 </div>
             </div>
         </section>
 
-        <!-- ============ ABOUT ============ -->
-        <section class="card" aria-label="Обо мне">
-            <div class="section-head">
-                <span class="icon">💬</span>
-                <h2>Обо мне</h2>
-            </div>
-            <p class="about-text">
-                Работаю в пресс-центре Смоленска с 2018 года. Пишу о людях, городских событиях и культурных проектах.
-                Фотография для меня — способ рассказать историю без единого слова. Сотрудничаю с федеральными и
-                региональными изданиями, веду авторскую колонку о медиа и запустила собственный фотопроект
-                «Смоленск в кадре».
-            </p>
-        </section>
-
-        <!-- ============ PHOTO PORTFOLIO ============ -->
-        <section class="card" aria-label="Портфолио">
-            <div class="section-head">
-                <span class="icon">📸</span>
-                <h2>Избранные работы</h2>
-            </div>
-            <div class="photo-ribbon">
-                <img src="https://smolgazeta.ru/fc-web/fc-files/2025/07/158894.jpg"
-                alt="Репортаж Смоленск" loading="lazy"
-                onerror="this.style.background='#f0ebe4'; this.style.minWidth='200px'; this.style.height='220px'">
-                <img src="https://images.pexels.com/photos/2777898/pexels-photo-2777898.jpeg?auto=compress&cs=tinysrgb&w=400"
-                alt="Интервью с героем" loading="lazy"
-                onerror="this.style.background='#f0ebe4'; this.style.minWidth='200px'; this.style.height='220px'">
-                <img src="https://images.pexels.com/photos/1181690/pexels-photo-1181690.jpeg?auto=compress&cs=tinysrgb&w=400"
-                alt="Работа в пресс-центре" loading="lazy"
-                onerror="this.style.background='#f0ebe4'; this.style.minWidth='200px'; this.style.height='220px'">
-                <img src="https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=400"
-                alt="Пресс-конференция" loading="lazy"
-                onerror="this.style.background='#f0ebe4'; this.style.minWidth='200px'; this.style.height='220px'">
-                <img src="https://images.pexels.com/photos/3205729/pexels-photo-3205729.jpeg?auto=compress&cs=tinysrgb&w=400"
-                alt="Городской репортаж" loading="lazy"
-                onerror="this.style.background='#f0ebe4'; this.style.minWidth='200px'; this.style.height='220px'">
+        <!-- 2. ЦЕЛЬ -->
+        <section class="section">
+            <h2 class="section__title"><span class="section__title-icon"></span> Цель</h2>
+            <div class="card">
+                <p style="font-size:0.95rem;color:var(--text-light);">
+                    Получение позиции <strong>старшего корреспондента / редактора</strong> в федеральном
+                    или крупном региональном издании с возможностью вести авторские фотопроекты
+                    и развивать digital-направление.
+                </p>
             </div>
         </section>
 
-        <!-- ============ EXPERIENCE ============ -->
-        <section class="card" aria-label="Опыт работы">
-            <div class="section-head">
-                <span class="icon">💼</span>
-                <h2>Опыт работы</h2>
-            </div>
-            <div class="timeline">
-                <div class="tl-item">
-                    <div class="tl-date">2022 — настоящее время</div>
-                    <div class="tl-role">Старший корреспондент</div>
-                    <div class="tl-org">Пресс-центр «Смоленские ведомости», Смоленск</div>
-                    <div class="tl-note">Пишу аналитические статьи, веду фоторепортажи, курирую соцсети</div>
-                </div>
-                <div class="tl-item">
-                    <div class="tl-date">2019 — 2022</div>
-                    <div class="tl-role">Фотокорреспондент</div>
-                    <div class="tl-org">Информагентство «Смоленск сегодня», Смоленск</div>
-                    <div class="tl-note">Освещала городские события, вела фотопроекты</div>
-                </div>
-                <div class="tl-item">
-                    <div class="tl-date">2017 — 2019</div>
-                    <div class="tl-role">Внештатный автор</div>
-                    <div class="tl-org">Журнал «Смоленская жизнь», Смоленск</div>
-                    <div class="tl-note">Публиковала очерки и репортажи о культурной жизни региона</div>
+        <!-- 3. ОПЫТ РАБОТЫ -->
+        <section class="section">
+            <h2 class="section__title"><span class="section__title-icon"></span> Опыт работы</h2>
+            <div class="card">
+                <div class="experience-list">
+                    <div class="exp-item">
+                        <div class="exp-item__header"><span class="exp-item__role">Старший корреспондент</span><span class="exp-item__date">2022 — н.в.</span></div>
+                        <div class="exp-item__company">Пресс-центр «Смоленские ведомости», Смоленск</div>
+                        <div class="exp-item__desc">Аналитические статьи, фоторепортажи, курирование соцсетей, редактура материалов коллег.</div>
+                    </div>
+                    <div class="exp-item">
+                        <div class="exp-item__header"><span class="exp-item__role">Фотокорреспондент</span><span class="exp-item__date">2019 — 2022</span></div>
+                        <div class="exp-item__company">ИА «Смоленск сегодня», Смоленск</div>
+                        <div class="exp-item__desc">Освещение городских событий, ведение фотопроектов, работа с архивом изображений.</div>
+                    </div>
+                    <div class="exp-item">
+                        <div class="exp-item__header"><span class="exp-item__role">Внештатный автор</span><span class="exp-item__date">2017 — 2019</span></div>
+                        <div class="exp-item__company">Журнал «Смоленская жизнь», Смоленск</div>
+                        <div class="exp-item__desc">Очерки и репортажи о культурной жизни региона, интервью с деятелями искусства.</div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- ============ SKILLS ============ -->
-        <section class="card" aria-label="Навыки">
-            <div class="section-head">
-                <span class="icon">🛠</span>
-                <h2>Ключевые навыки</h2>
-            </div>
-            <div class="skills-cloud">
-                <span class="skill-chip">Репортажная съёмка</span>
-                <span class="skill-chip">Интервью</span>
-                <span class="skill-chip">Adobe Lightroom</span>
-                <span class="skill-chip">Adobe Photoshop</span>
-                <span class="skill-chip">Копирайтинг</span>
-                <span class="skill-chip">Редактура</span>
-                <span class="skill-chip">SMM-стратегия</span>
-                <span class="skill-chip">Видеомонтаж</span>
-            </div>
-        </section>
-
-        <!-- ============ EDUCATION + LANGUAGES ============ -->
-        <section class="card" aria-label="Образование и языки">
-            <div class="section-head">
-                <span class="icon">🎓</span>
-                <h2>Образование</h2>
-            </div>
-            <div class="edu-row" style="margin-bottom:18px;">
-                <div class="edu-icon">🏛</div>
-                <div class="edu-info">
-                    <h4>Смоленский государственный университет</h4>
-                    <p>Факультет журналистики, 2017 · Диплом с отличием</p>
+        <!-- 4. ПРОФЕССИОНАЛЬНЫЕ НАВЫКИ -->
+        <section class="section">
+            <h2 class="section__title"><span class="section__title-icon"></span> Профессиональные навыки</h2>
+            <div class="card">
+                <div class="skills-grid">
+                    <div class="skill-item"><span class="skill-item__dot"></span> Репортажная фотосъёмка</div>
+                    <div class="skill-item"><span class="skill-item__dot"></span> Написание статей</div>
+                    <div class="skill-item"><span class="skill-item__dot"></span> Редактура текстов</div>
+                    <div class="skill-item"><span class="skill-item__dot"></span> Интервьюирование</div>
+                    <div class="skill-item"><span class="skill-item__dot"></span> Adobe Lightroom</div>
+                    <div class="skill-item"><span class="skill-item__dot"></span> Adobe Photoshop</div>
+                    <div class="skill-item"><span class="skill-item__dot"></span> Adobe Premiere Pro</div>
+                    <div class="skill-item"><span class="skill-item__dot"></span> SMM-стратегия</div>
+                    <div class="skill-item"><span class="skill-item__dot"></span> Копирайтинг</div>
+                    <div class="skill-item"><span class="skill-item__dot"></span> Вёрстка (Tilda, WP)</div>
+                    <div class="skill-item"><span class="skill-item__dot"></span> Фактчекинг</div>
+                    <div class="skill-item"><span class="skill-item__dot"></span> Работа с архивами</div>
                 </div>
             </div>
-            <div class="section-head" style="margin-top:6px;">
-                <span class="icon">🌐</span>
-                <h2>Языки</h2>
-            </div>
-            <div class="lang-row">
-                <span class="lang-badge">🇷🇺 Русский <span class="lang-level">— родной</span></span>
-                <span class="lang-badge">🇬🇧 Английский <span class="lang-level">— B2</span></span>
-                <span class="lang-badge">🇫🇷 Французский <span class="lang-level">— A2</span></span>
+        </section>
+
+        <!-- 5. ОБРАЗОВАНИЕ -->
+        <section class="section">
+            <h2 class="section__title"><span class="section__title-icon"></span> Образование</h2>
+            <div class="card">
+                <div class="experience-list">
+                    <div class="exp-item">
+                        <div class="exp-item__header"><span class="exp-item__role">Смоленский государственный университет</span><span class="exp-item__date">2013 — 2017</span></div>
+                        <div class="exp-item__company">Факультет журналистики, диплом с отличием</div>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <!-- ============ CONTACTS ============ -->
-        <section class="card" aria-label="Контакты">
-            <div class="section-head">
-                <span class="icon">📬</span>
-                <h2>Связаться со мной</h2>
-            </div>
-            <div class="contact-row">
-                <a href="mailto:k.stepenok@smolpress.ru" class="contact-pill">
-                    <span class="pill-icon">✉</span> k.stepenok@smolpress.ru
-                </a>
-                <a href="tel:+74812456789" class="contact-pill">
-                    <span class="pill-icon">📞</span> +7 (4812) 45-67-89
-                </a>
-                <a href="#" class="contact-pill">
-                    <span class="pill-icon">📷</span> @stepenok_photo
-                </a>
-                <a href="#" class="contact-pill">
-                    <span class="pill-icon">💬</span> Telegram
-                </a>
+        <!-- 6. ДОПОЛНИТЕЛЬНОЕ ОБРАЗОВАНИЕ -->
+        <section class="section">
+            <h2 class="section__title"><span class="section__title-icon"></span> Дополнительное образование</h2>
+            <div class="card">
+                <div class="experience-list">
+                    <div class="exp-item">
+                        <div class="exp-item__header"><span class="exp-item__role">Курс «Современная фотожурналистика»</span><span class="exp-item__date">2020</span></div>
+                        <div class="exp-item__company">Школа фотографии «Докер», Москва (онлайн)</div>
+                    </div>
+                    <div class="exp-item">
+                        <div class="exp-item__header"><span class="exp-item__role">Интенсив «SMM для медиа»</span><span class="exp-item__date">2021</span></div>
+                        <div class="exp-item__company">Нетология, онлайн-курс</div>
+                    </div>
+                    <div class="exp-item">
+                        <div class="exp-item__header"><span class="exp-item__role">Мастер-класс «Редактура в цифровую эпоху»</span><span class="exp-item__date">2023</span></div>
+                        <div class="exp-item__company">Союз журналистов России, Смоленск</div>
+                    </div>
+                </div>
             </div>
         </section>
 
-    </div>
+        <!-- 7. СЕРТИФИКАТЫ -->
+        <section class="section">
+            <h2 class="section__title"><span class="section__title-icon"></span> Сертификаты</h2>
+            <div class="card">
+                <div class="cert-list">
+                    <div class="cert-item">
+                        <span class="cert-item__icon">📜</span>
+                        <div class="cert-item__info"><h4>Adobe Certified Professional</h4><p>Lightroom, 2022</p></div>
+                    </div>
+                    <div class="cert-item">
+                        <span class="cert-item__icon">📜</span>
+                        <div class="cert-item__info"><h4>Google Digital Garage</h4><p>Основы digital-маркетинга, 2021</p></div>
+                    </div>
+                    <div class="cert-item">
+                        <span class="cert-item__icon">📜</span>
+                        <div class="cert-item__info"><h4>Союз журналистов России</h4><p>Членский билет № 4821, 2020</p></div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <script>
-        (function() {
-            // Generate floating particles
-            const particlesContainer = document.getElementById('particles');
-            const colors = ['#c75b4a', '#bfa07a', '#d4a99a', '#e8c9b8', '#f0d5c4', '#d9b8a8'];
-            for (let i = 0; i < 35; i++) {
-                const particle = document.createElement('div');
-                particle.classList.add('particle');
-                const size = Math.random() * 14 + 4;
-                particle.style.width = size + 'px';
-                particle.style.height = size + 'px';
-                particle.style.left = Math.random() * 100 + '%';
-                particle.style.background = colors[Math.floor(Math.random() * colors.length)];
-                particle.style.animationDuration = Math.random() * 18 + 10 + 's';
-                particle.style.animationDelay = Math.random() * 16 + 's';
-                particlesContainer.appendChild(particle);
-            }
+        <!-- 8. ЯЗЫКИ -->
+        <section class="section">
+            <h2 class="section__title"><span class="section__title-icon"></span> Языки</h2>
+            <div class="card">
+                <div class="skills-grid">
+                    <div class="skill-item"><span class="skill-item__dot"></span> 🇷🇺 Русский — родной</div>
+                    <div class="skill-item"><span class="skill-item__dot"></span> 🇬🇧 Английский — B2 (Upper-Intermediate)</div>
+                    <div class="skill-item"><span class="skill-item__dot"></span> 🇫🇷 Французский — A2</div>
+                </div>
+            </div>
+        </section>
 
-            // Intersection Observer for skill chips re-animation
-            const observerOptions = { threshold: 0.3 };
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const chips = entry.target.querySelectorAll('.skill-chip');
-                        chips.forEach((chip, idx) => {
-                            chip.style.animation = 'none';
-                            chip.offsetHeight;
-                            chip.style.animation = 'chipPop 0.5s ease-out both';
-                            chip.style.animationDelay = idx * 0.06 + 's';
-                        });
-                    }
-                });
-            }, observerOptions);
+        <!-- 9. ПУБЛИКАЦИИ -->
+        <section class="section">
+            <h2 class="section__title"><span class="section__title-icon"></span> Избранные публикации</h2>
+            <div class="card">
+                <div class="publications-list">
+                    <div class="pub-item"><strong>«Смоленск после заката»</strong> — фотоистория, «Смоленские ведомости», июль 2025</div>
+                    <div class="pub-item"><strong>«Культурный код региона»</strong> — серия интервью, ИА «Смоленск сегодня», 2020–2021</div>
+                    <div class="pub-item"><strong>«Как рождается новость»</strong> — аналитическая статья, журнал «Журналист», №4, 2023</div>
+                    <div class="pub-item"><strong>«Лица города»</strong> — фотопроект, опубликован в трёх номерах «Смоленской жизни», 2018</div>
+                </div>
+            </div>
+        </section>
 
-            const skillsCard = document.querySelector('.skills-cloud')?.parentElement;
-            if (skillsCard) observer.observe(skillsCard);
-        })();
-    </script>
+        <!-- 10. ПОРТФОЛИО (кратко) -->
+        <section class="section">
+            <h2 class="section__title"><span class="section__title-icon"></span> Портфолио (избранное)</h2>
+            <div class="card">
+                <div class="portfolio-grid">
+                    <article class="portfolio-card">
+                        <img class="portfolio-card__img" src="https://smolgazeta.ru/fc-web/fc-files/2025/07/158894.jpg" alt="Репортаж" loading="lazy" onerror="this.style.background='#e8ecf0';">
+                        <div class="portfolio-card__body"><h3 class="portfolio-card__title">Открытие культурного центра</h3><p class="portfolio-card__desc">Фоторепортаж, 2025</p></div>
+                    </article>
+                    <article class="portfolio-card">
+                        <img class="portfolio-card__img" src="https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Пресс-конференция" loading="lazy" onerror="this.style.background='#e8ecf0';">
+                        <div class="portfolio-card__body"><h3 class="portfolio-card__title">Пресс-конференция губернатора</h3><p class="portfolio-card__desc">Серия снимков + статья, 2024</p></div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- 11. ПРОФЕССИОНАЛЬНЫЕ ДОСТИЖЕНИЯ -->
+        <section class="section">
+            <h2 class="section__title"><span class="section__title-icon"></span> Достижения и награды</h2>
+            <div class="card">
+                <div class="achievements-grid">
+                    <div class="achievement-card"><div class="achievement-card__icon">🥇</div><div class="achievement-card__text">Лучший фоторепортаж года — премия СЖР, 2023</div></div>
+                    <div class="achievement-card"><div class="achievement-card__icon">🏆</div><div class="achievement-card__text">Победитель конкурса «Смоленский объектив», 2022</div></div>
+                    <div class="achievement-card"><div class="achievement-card__icon">📈</div><div class="achievement-card__text">Рост аудитории соцсетей издания на 40% за 4 месяца</div></div>
+                    <div class="achievement-card"><div class="achievement-card__icon">📰</div><div class="achievement-card__text">Публикация в федеральном журнале «Журналист», 2023</div></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 12. УЧАСТИЕ В ПРОЕКТАХ -->
+        <section class="section">
+            <h2 class="section__title"><span class="section__title-icon"></span> Участие в проектах</h2>
+            <div class="card">
+                <div class="experience-list">
+                    <div class="exp-item">
+                        <div class="exp-item__header"><span class="exp-item__role">Фотопроект «Смоленск в кадре»</span><span class="exp-item__date">2023 — н.в.</span></div>
+                        <div class="exp-item__desc">Авторский проект: ежемесячные фотоистории о городе и его жителях.</div>
+                    </div>
+                    <div class="exp-item">
+                        <div class="exp-item__header"><span class="exp-item__role">Документальный фильм «Голоса крепости»</span><span class="exp-item__date">2022</span></div>
+                        <div class="exp-item__desc">Участие в съёмках в качестве второго оператора. Проект Смоленского ТВ.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 13. ТЕХНИКА -->
+        <section class="section">
+            <h2 class="section__title"><span class="section__title-icon"></span> Техника и оборудование</h2>
+            <div class="card">
+                <div class="equipment-list">
+                    <span class="equipment-item">Canon EOS R6</span>
+                    <span class="equipment-item">Canon 24-70mm f/2.8</span>
+                    <span class="equipment-item">Canon 70-200mm f/4</span>
+                    <span class="equipment-item">Вспышка Godox V1</span>
+                    <span class="equipment-item">MacBook Pro 16"</span>
+                    <span class="equipment-item">iPad Pro (обработка)</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 14. ЛИЧНЫЕ КАЧЕСТВА -->
+        <section class="section">
+            <h2 class="section__title"><span class="section__title-icon"></span> Личные качества</h2>
+            <div class="card">
+                <div class="skills-grid">
+                    <div class="skill-item"><span class="skill-item__dot"></span> Ответственность</div>
+                    <div class="skill-item"><span class="skill-item__dot"></span> Внимание к деталям</div>
+                    <div class="skill-item"><span class="skill-item__dot"></span> Работа в режиме дедлайнов</div>
+                    <div class="skill-item"><span class="skill-item__dot"></span> Коммуникабельность</div>
+                    <div class="skill-item"><span class="skill-item__dot"></span> Стрессоустойчивость</div>
+                    <div class="skill-item"><span class="skill-item__dot"></span> Инициативность</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 15. ХОББИ -->
+        <section class="section">
+            <h2 class="section__title"><span class="section__title-icon"></span> Хобби и интересы</h2>
+            <div class="card">
+                <div class="skills-grid">
+                    <div class="skill-item"><span class="skill-item__dot"></span> Плёночная фотография</div>
+                    <div class="skill-item"><span class="skill-item__dot"></span> Путешествия по области</div>
+                    <div class="skill-item"><span class="skill-item__dot"></span> Чтение non-fiction</div>
+                    <div class="skill-item"><span class="skill-item__dot"></span> Велопрогулки</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 16. ВОЛОНТЁРСТВО -->
+        <section class="section">
+            <h2 class="section__title"><span class="section__title-icon"></span> Волонтёрство</h2>
+            <div class="card">
+                <div class="experience-list">
+                    <div class="exp-item">
+                        <div class="exp-item__header"><span class="exp-item__role">Медиа-волонтёр фонда «Смоленск — вместе»</span><span class="exp-item__date">2021 — н.в.</span></div>
+                        <div class="exp-item__desc">Бесплатная фотосъёмка благотворительных мероприятий, ведение соцсетей фонда.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 17. РЕКОМЕНДАЦИИ -->
+        <section class="section">
+            <h2 class="section__title"><span class="section__title-icon"></span> Рекомендации</h2>
+            <div class="card">
+                <div class="recommendation-card">
+                    <p class="recommendation-card__text">Екатерина — один из лучших фотокорреспондентов, с которыми мне доводилось работать. Её снимки всегда точны по композиции и эмоционально заряжены.</p>
+                    <p class="recommendation-card__author">Алексей Громов, <span>главный редактор ИА «Смоленск сегодня»</span></p>
+                </div>
+                <div class="recommendation-card">
+                    <p class="recommendation-card__text">Ответственный и глубокий автор. Умеет раскрыть тему и найти интересный угол подачи даже в рутинном информационном поводе.</p>
+                    <p class="recommendation-card__author">Марина Кольцова, <span>шеф-редактор «Смоленских ведомостей»</span></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 18. ЗАРПЛАТНЫЕ ОЖИДАНИЯ -->
+        <section class="section">
+            <h2 class="section__title"><span class="section__title-icon"></span> Зарплатные ожидания</h2>
+            <div class="card">
+                <p style="font-size:0.95rem;color:var(--text-light);">
+                    От <strong>60 000 ₽</strong> на старте (полная занятость, г. Смоленск). Готова обсуждать условия
+                    для удалённой работы и проектной занятости.
+                </p>
+            </div>
+        </section>
+
+        <!-- 19. ГРАФИК РАБОТЫ -->
+        <section class="section">
+            <h2 class="section__title"><span class="section__title-icon"></span> Предпочтительный график</h2>
+            <div class="card">
+                <div class="skills-grid">
+                    <div class="skill-item"><span class="skill-item__dot"></span> Полная занятость</div>
+                    <div class="skill-item"><span class="skill-item__dot"></span> Гибридный формат</div>
+                    <div class="skill-item"><span class="skill-item__dot"></span> Проектная работа</div>
+                    <div class="skill-item"><span class="skill-item__dot"></span> Готова к командировкам</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 20. ГОТОВНОСТЬ К ПЕРЕЕЗДУ -->
+        <section class="section">
+            <h2 class="section__title"><span class="section__title-icon"></span> Готовность к переезду</h2>
+            <div class="card">
+                <p style="font-size:0.95rem;color:var(--text-light);">
+                    Рассматриваю варианты в <strong>Москве, Санкт-Петербурге</strong>. Возможен переезд
+                    при интересном предложении и компенсации релокации.
+                </p>
+            </div>
+        </section>
+
+        <!-- 21. КОНТАКТЫ -->
+        <section class="section">
+            <h2 class="section__title"><span class="section__title-icon"></span> Контакты</h2>
+            <div class="card">
+                <div class="contacts-grid">
+                    <a href="mailto:k.stepenok@smolpress.ru" class="contact-card">
+                        <span class="contact-card__icon">✉</span>
+                        <div><div class="contact-card__label">Email</div><div class="contact-card__value">k.stepenok@smolpress.ru</div></div>
+                    </a>
+                    <a href="tel:+74812456789" class="contact-card">
+                        <span class="contact-card__icon">📞</span>
+                        <div><div class="contact-card__label">Телефон</div><div class="contact-card__value">+7 (4812) 45-67-89</div></div>
+                    </a>
+                    <a href="#" class="contact-card">
+                        <span class="contact-card__icon">📷</span>
+                        <div><div class="contact-card__label">Instagram</div><div class="contact-card__value">@stepenok_photo</div></div>
+                    </a>
+                    <a href="#" class="contact-card">
+                        <span class="contact-card__icon">💬</span>
+                        <div><div class="contact-card__label">Telegram</div><div class="contact-card__value">@stepenok</div></div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <p>© 2026 Екатерина Степенок. Смоленск. <a href="mailto:k.stepenok@smolpress.ru">k.stepenok@smolpress.ru</a></p>
+    </footer>
+
+    <script src="js/main.js"></script>
 </body>
 </html>
